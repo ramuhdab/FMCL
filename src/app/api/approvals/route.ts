@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
     const procurement_id = searchParams.get('procurement_id');
 
     let query = `
-      SELECT a.*, u.name as approver_name, pr.quantity_requested, pr.justification, ii.name as item_name
+      SELECT a.*, u.name as approver_name, pr.quantity_requested, pr.justification, ii.name as item_name, ii.stock_quantity
       FROM approvals a
       JOIN procurement_requests pr ON pr.id=a.procurement_id
       JOIN inventory_items ii ON ii.id=pr.item_id
